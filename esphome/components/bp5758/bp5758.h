@@ -74,7 +74,7 @@ class MyCustomLightOutput : public Component, public LightOutput {
   void dynamic_range(float &bright_percent, uint8_t &mA_max) {
     if (!this->use_dynamic_range) return;
     if (bright_percent == 0) {
-      // by setting the range to zero now, flicker is avoided when the light is turned on 
+      // by setting the range to zero now, flicker is avoided when the light is turned on
       mA_max = 0;
     } else {
       float bright_mA = bright_percent * mA_max;
@@ -95,7 +95,7 @@ class MyCustomLightOutput : public Component, public LightOutput {
   }
   void write_state(LightState *state) override {
     float red, green, blue, cold_white, warm_white;
-    state->current_values_as_rgbww(&red, &green, &blue, &cold_white, &warm_white, this->constant_brightness);
+    state->current_values_as_rgbww(&blue, &green, &red, &cold_white, &warm_white, this->constant_brightness);
     // ESP_LOGW(TAG, "red:%f\tgreen:%f\tblue:%f\tcold:%f\twarm:%f",red, green, blue, cold_white, warm_white );
 
     uint8_t red_max = 0b00010000, green_max = 0b00010000, blue_max = 0b00010000, cold_white_max = 0b00011010, warm_white_max = 0b00011010;
