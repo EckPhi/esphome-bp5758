@@ -9,7 +9,7 @@ esphome:
   platform: ESP8266
   board: esp01_1m
   includes:
-    - bp5758.h
+    - esphome\components\bp5758\bp5758.h
 
 wifi:
   ssid: !secret wifi_name
@@ -44,4 +44,3 @@ light:
               name: static range
               lambda: |-
                 get_bp5758(tuya_globe->get_output()).use_dynamic_range = false;
-            
